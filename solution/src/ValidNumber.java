@@ -5,7 +5,7 @@
  */
 public class ValidNumber {
     public static void main(String[] args) {
-        String s = ".1";
+        String s = ".";
         System.out.println(isNumber(s));
     }
     public static boolean isNumber(String s) {
@@ -17,9 +17,13 @@ public class ValidNumber {
                 if ((chars[i]<'0'||chars[i]>'9')&&chars[i]!='-'&&chars[i]!='.'){
                     return false;
                 }else if (chars[i]=='-'||chars[i]=='.'){
-                    if (i==chars.length-1||chars[i]<'0'||chars[i]>'9'){
+                    if (i==chars.length-1){
                         return false;
                     }
+                    continue;
+//                    if (i==chars.length-1||chars[i]<'0'||chars[i]>'9'){
+//                        return false;
+//                    }
                 }
             }else {
                 if ((chars[i]<'0'||chars[i]>'9')&&chars[i]!='e'&&chars[i]!='.'){
