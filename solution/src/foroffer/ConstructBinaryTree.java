@@ -19,7 +19,7 @@ public class ConstructBinaryTree {
                 index = i;
             }
         }
-        int[] left = in.
+        //int[] left = in.
         return root;
     }
 }
