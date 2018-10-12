@@ -13,16 +13,11 @@ public class FindGreatestSumOfSubArray {
     public static int findGreatestSumOfSubArray(int[] array) {
         if (null==array||array.length==0)
             return 0;
-        int[] dp = new int[array.length];
-        for (int i = 0; i < array.length; i++) {
-            dp[i] =0;
-        }
-        dp[0]=array[0];
-        int max = dp[0];
+        int max = array[0];
         for (int i = 1; i < array.length; i++) {
-            dp[i]=getMax(dp[i-1]+array[i],array[i]);
-            if (dp[i]>max){
-                max=dp[i];
+            array[i]=getMax(array[i-1]+array[i],array[i]);
+            if (array[i]>max){
+                max=array[i];
             }
         }
         return max;
