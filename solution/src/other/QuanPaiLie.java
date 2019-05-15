@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class QuanPaiLie {
     public static void main(String[] args) {
-        //QPL2(0,"","123");
-        List<String> qpl = QPL("123");
-        for (String str :qpl){
-            System.out.println(str);
-        }
+        QPL2("","123");
+//        List<String> qpl = QPL("123");
+//        for (String str :qpl){
+//            System.out.println(str);
+//        }
 
     }
     //递归解法1
@@ -40,14 +40,29 @@ public class QuanPaiLie {
 
     }
     //递归解法2
-    public static void QPL2(int num,String prefix,String left){
+    public static void QPL2(String prefixStr,String leftStr){
+        if (leftStr.length()==1){
+            System.out.println(prefixStr+leftStr);
+        }else {
+            char[] chars = leftStr.toCharArray();
+            for (int i = 0; i < chars.length; i++) {
+                String tmpLeftStr = leftStr.substring(0,i)+leftStr.substring(i+1);
+                String tmpPrefixStr = prefixStr+String.valueOf(chars[i]);
+//                System.out.println("prefixStr:"+tmpPrefixStr);
+//                System.out.println("leftStr:"+tmpLeftStr);
+                QPL2(tmpPrefixStr,tmpLeftStr);
+            }
+        }
+    }
+    //递归解法3
+    public static void QPL3(int num,String prefix,String left){
         if (num==3) {
             System.out.println(prefix);
         }else {
             char[] chars = left.toCharArray();
             for (int i = 0; i < chars.length; i++) {
                 String tmpStr = left.substring(0,i)+left.substring(i+1);
-                QPL2(3-tmpStr.length(), prefix+String.valueOf(chars[i]),tmpStr);
+                QPL3(3-tmpStr.length(), prefix+String.valueOf(chars[i]),tmpStr);
 
             }
         }
